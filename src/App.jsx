@@ -1,7 +1,11 @@
-import ListaProyectos from "./components/ListaProyectos"
+import { Routes, Route, Navigate } from "react-router-dom"
 import Header from "./components/Header"
 import Nav from "./components/Nav"
 import Footer from "./components/Footer"
+import Dashboard from "./views/Dashboard"
+import ListaProyectos from "./views/ListaProyectos"
+import PerfilUsuario from "./views/PerfilUsuario"
+import DetalleProyecto from "./views/DetalleProyecto"
 
 function App() {
   return (
@@ -9,7 +13,34 @@ function App() {
       <Header />
       <Nav />
 
-      <ListaProyectos />
+      <Routes>
+
+        <Route
+          path="/"
+          element={<Navigate to="/dashboard" />}
+        />
+
+        <Route
+          path="/dashboard"
+          element={<Dashboard />}
+        />
+
+        <Route
+          path="/proyectos"
+          element={<ListaProyectos />}
+        />
+
+        <Route
+          path="/proyectos/:id"
+          element={<DetalleProyecto />}
+        />
+
+        <Route
+          path="/perfil"
+          element={<PerfilUsuario />}
+        />
+
+      </Routes>
 
       <Footer />
     </>
